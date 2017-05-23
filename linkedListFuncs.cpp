@@ -112,30 +112,26 @@ void addIntToEndOfList(LinkedList *list, int value) {
   assert(list!=NULL); // if list is NULL, we can do nothing.
 
   Node *p; // temporary pointer
-
-  // TODO:
   // (1) Allocate a new node.  p will point to it.
-
-  p = NULL; // THIS IS PLACE-HOLDER LINE OF CODE.  DELETE IT AND REPLACE IT.
-
+  p= new Node;
   // (2) Set p's data field to the value passed in
-  
+  p->data=value;
   // (3) Set p's next field to NULL
-
+  p->next=NULL;
 
   if (list->head == NULL) {
 
     // (4) Make both head and tail of this list point to p
-    
-    
+    list->head=p;
+    list->tail=p;
   } else {
-
+     
     // Add p at the end of the list.   
-
+    list->tail->next=p;
     // (5) The current node at the tail? Make it point to p instead of NULL
-
+    list->tail=p;   
     // (6) Make the tail of the list be p now.
-
+    
   }
 
 }
@@ -162,5 +158,20 @@ void addIntToStartOfList(LinkedList *list, int value) {
   //   the head points to the new node you added, and that
   //   the new node points to the node that *used* to be the head.
   // The order in which you do things matters.
+  Node *p;
+  p= new Node;
+  p->data=value;
+  p->next=NULL;
 
+
+  if (list->head == NULL) {
+    list->head=p;
+    list->tail=p;   
+  }
+  else {  
+    p->next=list->head;
+    list->head=p;
+  }
 }
+
+
